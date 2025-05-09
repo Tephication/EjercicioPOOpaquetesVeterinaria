@@ -91,34 +91,37 @@ public class Perro {
         int opcion;
 
         do {
-            System.out.println("Bienvenido al gestor de perros, ¿Qué deseas hacer?: ");
+            System.out.println("\nBienvenido al gestor de perros, ¿Qué deseas hacer?: ");
             System.out.println("1. Registrar mascota ");
             System.out.println("2. Ver mascotas registradas ");
             System.out.println("3. Salir ");
             opcion = scanner.nextInt();
             scanner.nextLine();
-            if(opcion <= 2) {
+            if(opcion <= 2 || opcion == 3) {
                 switch (opcion) {
                     case 1:
+                        Perro nuevoPerro = new Perro();
                         System.out.println("Ingresa el nombre de tu perro: ");
-                        this.setNombre(scanner.nextLine());
+                        nuevoPerro.setNombre(scanner.nextLine());
 
                         System.out.println("Ingresa la raza de tu perro: ");
-                        this.setRaza(scanner.nextLine());
+                        nuevoPerro.setRaza(scanner.nextLine());
 
                         System.out.println("Ingresa la edad de tu perro: ");
-                        this.setEdad(scanner.nextInt());
+                        nuevoPerro.setEdad(scanner.nextInt());
                         scanner.nextLine();
 
                         System.out.println("Ingresa el peso de tu perro en kg: ");
-                        this.setPeso(scanner.nextDouble());
+                        nuevoPerro.setPeso(scanner.nextDouble());
                         scanner.nextLine();
 
                         System.out.print("Ingrese el historial médico: ");
-                        this.setHistorialMedico();
+                        nuevoPerro.setHistorialMedico(scanner.nextLine());
+
+                        listaPerros.add(nuevoPerro);
 
                         System.out.println("\n Registro exitoso: ");
-                        mostrarFichaRegistro();
+                        nuevoPerro.mostrarFichaRegistro();
 
                         break;
 
@@ -129,7 +132,7 @@ public class Perro {
                         }
                         break;
                     case 3:
-                        System.out.println("Gracias por usar el gestor de perros");
+                        System.out.println("Adiós. Gracias por usar el gestor de perros");
                         break;
                     default:
                         System.out.println("Opción inválida");
